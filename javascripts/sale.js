@@ -1,22 +1,22 @@
 const products = [
   {
     id: 1,
-    name: "オリジナルブレンド200g",
+    name: "Mélange original 200g",
     price: "500"
   },
   {
     id: 2,
-    name: "オリジナルブレンド500g",
+    name: "Mélange original 500g",
     price: "900"
   },
   {
     id: 3,
-    name: "スペシャルブレンド200g",
+    name: "Mélange spécial 200g",
     price: "700"
   },
   {
     id: 4,
-    name: "スペシャルブレンド500g",
+    name: "Mélange spécial 500g",
     price: "1200"
   }]
 
@@ -25,7 +25,7 @@ const numberElement = document.getElementById("number");
 let purchases = [];
 
 function add() {
-  // const price = priceElement.value;
+
   const price = products.find(e => e.id === parseInt(productElement.value)).price;
   const number = numberElement.value;
   const name = products.find(e => e.id === parseInt(productElement.value)).name;
@@ -43,7 +43,7 @@ function add() {
     purchases[newPurchase].number += purchase.number; //--3
   }
 
-  window.alert(`${display()}\n小計${subtotal()}円`);
+  window.alert(`${display()}\n Le sous-total est ${subtotal()}yens`);
   productElement.value = "";
   numberElement.value = "";
 }
@@ -51,7 +51,7 @@ function add() {
 function display() {
   let string = "";
   for(let i=0; i<purchases.length; i++){
-    string += `${purchases[i].name} ${purchases[i].price}円：${purchases[i].number}点\n`;
+    string += `${purchases[i].name} ${purchases[i].price}yen：${purchases[i].number}point\n`;
   }
   return string;
 }
@@ -68,7 +68,7 @@ function calc() {
   const sum = subtotal();
   const detail = display();
   const postage = calcPostageFromPurchase(sum);
-  window.alert(`${detail}\n小計は${sum}円、送料は${postage}円です。合計は${sum + postage}円です。`);
+  window.alert(`${detail}\n Le sous-total est ${sum}yens, et les frais d'expédition sont ${postage}yens. Le total est ${sum + postage}yens`);
   purchases = [];
   productElement.value= "";
   numberElement.value = "";
